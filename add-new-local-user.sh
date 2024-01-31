@@ -24,16 +24,26 @@ COMMENT="${*}"
 # Creating an account
 useradd -c "${COMMENT}" -m "${USER_NAME}"
 
-# Generating random password and set it to the account
-PASSWORD=$(date +%s%N | sha256sum | head -c48)
-echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
-
 # Chceck if the account was created
 if [[ "${?}" -ne '0' ]]
 then
 	echo "The account wasn't created"
 	exit 1
 fi
+
+# Generating random password and set it to the account
+PASSWORD=$(date +%s%N | sha256sum | head -c48)
+echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
+
+# Check if the passwd command was succeeded
+if [[ "${?}" -ne '0' ]]
+then
+	echo "The passsword couldn't be set."
+	exit 1
+fi
+
+# Force to change password after the user log in
+passwd -e "${USER_NAME}"
 
 # Displaying the username, password and host where the account was created
 echo
