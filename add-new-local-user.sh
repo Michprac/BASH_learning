@@ -1,18 +1,21 @@
 #!/bin/bash
 
-# This script generates a new local user with password
+# This script creates a new user on the local system with generated password
+# You have to supply a username as an argument to the script
+# Also you can supply a comment as an argument
 
 # Checking if the script is running with superuser privileges
 if [[ ${UID} -ne '0' ]]
 then
-	echo "YOu have no privileges. Run as sudo"
+	echo "YOu have no privileges. Please run as root"
 	exit 1
 fi
 
 # Chcecking if there are any arguments supplied
 if [[ ${#} -lt 1 ]]
 then
-	echo "Usage ${0} USER_NAME [COMMENT] ..."
+	echo "Usage: ${0} USER_NAME [COMMENT]..."
+	echo "Create an account on the local system with the name of USER_NAME and a comments field of COMMENT."
 	exit 1
 fi
 
@@ -20,6 +23,9 @@ fi
 USER_NAME="${1}"
 shift
 COMMENT="${*}"
+
+# Generating random password
+PASSWORD=$(date +%s%N | sha256sum | head -c48)
 
 # Creating an account
 useradd -c "${COMMENT}" -m "${USER_NAME}"
@@ -31,8 +37,7 @@ then
 	exit 1
 fi
 
-# Generating random password and set it to the account
-PASSWORD=$(date +%s%N | sha256sum | head -c48)
+# Set the password to the account
 echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
 
 # Check if the passwd command was succeeded
@@ -42,7 +47,7 @@ then
 	exit 1
 fi
 
-# Force to change password after the user log in
+# Force password change after the user log in
 passwd -e "${USER_NAME}"
 
 # Displaying the username, password and host where the account was created
