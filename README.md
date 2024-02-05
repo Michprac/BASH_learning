@@ -5,7 +5,7 @@ In this repositorium, I'm trying to learn something about bash scripting.
 ## Script add-local-user.sh
 
 - *Input:* You have no need to put any arguments, just call this script in your terminal.
-- *Functionality:* This script is based on entering different parameteres (like USERNAME, PASSWORD and REAL NAME) by user to the terminal, using **read -p** command. Also there is some checking conditions, for example for if the user has superuser previleges.
+- *Functionality:* This script is based on entering different parameteres (like USERNAME, PASSWORD and REAL NAME) by user to the terminal, using ``read -p`` command. Also there is some checking conditions, for example for if the user has superuser previleges.
 - *Output:* In the output, user get displaying username, password and host.
 
 ## Script add-new-local-user.sh
@@ -19,5 +19,9 @@ This script is developing of the previous, but the goal remains the same, which 
 
 This script is modification of the previous for creating a new account, but with some modifications, which is adding some STD IN/OUT/ERR commands
 - *Input:*  As it was in previous script, you have to put at least one argument (USER_NAME and optionally comments)
-- *Functionality:* A special features were added to this script, like redirecting some messages to the STDERR (Standard error) using command **1>&2**.
-- *Output:* In the output, user get only username, password and host. Everything else is hiden by sending to the /dev/null using **&> /dev/null** after **echo** or other commends, for example **useradd**.
+- *Functionality:* A special features were added to this script, like redirecting some messages to the STDERR (Standard error) using command ``1>&2``.
+- *Output:* In the output, user get only username, password and host. Everything else is hiden by sending to the /dev/null using ``&> /dev/null`` after ``echo`` or other commends, for example ``useradd``.
+
+## New one
+
+In this script one new command was used, which is called ``getopts``. This command is useful, when user want to realize some scenarios with different flags. For example ``command -l -s`` ( in this case it's better to use ``getopts`` function neither writing a huge piece of code using case-statement).
