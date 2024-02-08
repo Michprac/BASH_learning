@@ -22,6 +22,10 @@ This script is modification of the previous for creating a new account, but with
 - *Functionality:* A special features were added to this script, like redirecting some messages to the STDERR (Standard error) using command ``1>&2``.
 - *Output:* In the output, user get only username, password and host. Everything else is hiden by sending to the /dev/null using ``&> /dev/null`` after ``echo`` or other commends, for example ``useradd``.
 
-## New one
+## Script disable-local-user.sh
 
 In this script one new command was used, which is called ``getopts``. This command is useful, when user want to realize some scenarios with different flags. For example ``command -l -s`` ( in this case it's better to use ``getopts`` function neither writing a huge piece of code using case-statement).
+
+- *Input:* User should choose any option from the list ( -d for deleting, -r for removing home directory, -a for archiving)
+- *Functionality:* The script is based on two main commands, that is ``getopts`` and ``for loop``. The first one is used for option processing and the second one for arguments processing, namely usernames.
+- *Output:* In the output user can get archives of the users' accounts or deleted/disabled account. Also every step of the perfoming is  displayed in the terminal.
