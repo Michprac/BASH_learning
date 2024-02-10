@@ -29,3 +29,5 @@ In this script one new command was used, which is called ``getopts``. This comma
 - *Input:* User should choose any option from the list ( -d for deleting, -r for removing home directory, -a for archiving)
 - *Functionality:* The script is based on two main commands, that is ``getopts`` and ``for loop``. The first one is used for option processing and the second one for arguments processing, namely usernames.
 - *Output:* In the output user can get archives of the users' accounts or deleted/disabled account. Also every step of the perfoming is  displayed in the terminal.
+
+## New one script
