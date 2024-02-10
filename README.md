@@ -30,4 +30,10 @@ In this script one new command was used, which is called ``getopts``. This comma
 - *Functionality:* The script is based on two main commands, that is ``getopts`` and ``for loop``. The first one is used for option processing and the second one for arguments processing, namely usernames.
 - *Output:* In the output user can get archives of the users' accounts or deleted/disabled account. Also every step of the perfoming is  displayed in the terminal.
 
-## New one script
+## Script show-attackers.sh
+
+In this script some string editing commands where introduced like ``awk``, ``sort`` and ``uniq``.
+
+- *Input:* User should prvide a file with some log information like failed attempts with IP addresses.
+- *Functionality:* This script counts how many failed attempts occured for different IP addresses. If this number is greter then defined variable LIMIT, then in the output user get csv format information.
+- *Output:* User can get csv type of displaying information about failed login attempts. The view of the display is like count,IP,Location.
