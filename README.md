@@ -34,6 +34,14 @@ In this script one new command was used, which is called ``getopts``. This comma
 
 In this script some string editing commands where introduced like ``awk``, ``sort`` and ``uniq``.
 
-- *Input:* User should prvide a file with some log information like failed attempts with IP addresses.
+- *Input:* User should provide a file with some log information like failed attempts with IP addresses.
 - *Functionality:* This script counts how many failed attempts occured for different IP addresses. If this number is greter then defined variable LIMIT, then in the output user get csv format information.
 - *Output:* User can get csv type of displaying information about failed login attempts. The view of the display is like count,IP,Location.
+
+## Script show-attackers.sh
+
+This script can help user to run multiple commands on many servers automatically. Prerequistes: user should have a file (Or use a default ``/vagrant/servers``} for listing all servers' names
+
+- *Input:* User should provide a file with the names of the servers, any command for executing and additionally choose some option lik ``-v`` (displaying the name of procesing server)
+- *Functionality:* The script is based on for loop, run through all supplied server names and perform different scenario according to the user choice
+- *Output:* User can get some information displayed and the results of executing commands on other servers
